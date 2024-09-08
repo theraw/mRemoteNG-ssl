@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Runtime.Versioning;
 using System.Windows.Forms;
@@ -23,6 +23,11 @@ namespace mRemoteNG.App
     {
         public static void ExportToFile(ConnectionInfo selectedNode, ConnectionTreeModel connectionTreeModel)
         {
+            MessageBox.Show("🚨 ERROR 404: Export Not Found! 🚨\n\nIt seems the export button has run away to join the circus. 🎪\n" +
+                            "In the meantime, please try yelling at your computer or offering it a cookie. 🍪\n\nGood luck! 🤞",
+                            "Export Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+
             try
             {
                 SaveFilter saveFilter = new();
@@ -69,6 +74,7 @@ namespace mRemoteNG.App
                 Runtime.MessageCollector.AddExceptionMessage("App.Export.ExportToFile() failed.", ex);
             }
         }
+
 
         private static void SaveExportFile(string fileName,
                                            SaveFormat saveFormat,
